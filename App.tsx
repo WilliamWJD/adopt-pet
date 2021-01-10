@@ -1,12 +1,14 @@
 import React from 'react';
+import { StatusBar } from 'react-native';
 
-import { Text, View } from 'react-native';
+import Routes from './src/routes';
 
 const App:React.FC = () =>{
   return(
-    <View style={{ flex:1, justifyContent:'center', alignItems:'center', backgroundColor:'#7159c1' }}>
-      <Text style={{ color:'#fff', fontWeight:'bold' }}>Hello World</Text>
-    </View>
+    <>
+      <StatusBar/>
+      <Routes/>
+    </>
   )
 }
 
