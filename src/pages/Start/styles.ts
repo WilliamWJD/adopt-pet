@@ -1,7 +1,5 @@
 import styled from 'styled-components/native';
 
-import teste from '../../assets/background.png';
-
 export const Container = styled.ImageBackground`
     flex:1;
     justify-content:center;
