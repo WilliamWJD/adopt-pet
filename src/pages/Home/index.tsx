@@ -2,6 +2,7 @@ import React from 'react';
 import { Ionicons } from '@expo/vector-icons'
 
 import Recomended from '../../components/Recomended';
+import NewPet from '../../components/NewPets';
 
 import { 
   Container, 
@@ -20,8 +21,7 @@ const Home: React.FC = () => {
     <Container>
       <Header>
         <MyFavoriteList>
-          <MyFavoriteListTitle>Favoritos</MyFavoriteListTitle>
-          <Ionicons name="star-outline" size={20} color="#382927" />
+          <MyFavoriteListTitle>Favoritos ⭐</MyFavoriteListTitle>
         </MyFavoriteList>
       </Header>
 
@@ -35,9 +35,10 @@ const Home: React.FC = () => {
         <Input placeholder="Pesquisa por uma raça"/>
       </BoxSearch>
 
-      <Recomended
-        title="Recomendados"
-      />
+      <Recomended/>
+
+      <NewPet/>
+
     </Container>
   )
 }

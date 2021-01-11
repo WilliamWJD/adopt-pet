@@ -16,7 +16,8 @@ export const BoxItems = styled.ScrollView`
 export const Item = styled.TouchableOpacity`
     width:150px;
     background-color:#fff;
-    border-radius:15px;
+    border-top-left-radius:20px;
+    border-bottom-right-radius:20px;
     justify-content:center;
     padding:15px;
     margin-right:10px;
@@ -26,6 +27,8 @@ export const ImagePet = styled.Image`
     width:120px;
     height:120px;
     justify-content:center;
+    border-top-left-radius:20px;
+    border-bottom-right-radius:20px;
 `;
 
 export const PetName = styled.Text`
@@ -34,7 +37,6 @@ export const PetName = styled.Text`
 `;
 
 export const PetAge = styled.Text`
-    color:#7f8c8d;
-    font-size:13px;
+    color:#95a5a6;
 `;
 

@@ -11,19 +11,14 @@ import {
     PetAge
 } from './styles';
 
-interface RecomendedProps{
-    title:string;
-}
-
-const Recomended: React.FC<RecomendedProps> = ({ title }) => {
+const Recomended: React.FC = () => {
   return(
       <Container>
-          <Title>{title}</Title>
+          <Title>❤️ Recomendados</Title>
           <BoxItems horizontal={true} showsHorizontalScrollIndicator={false}>
               <Item>
                   <ImagePet 
-                    source={{ uri:'https://i.pinimg.com/originals/34/80/dc/3480dcfd45f6e4e343c28c4acf43748d.png' }}
-                    style={{ resizeMode:"contain" }}
+                    source={{ uri:'https://conviteasaude.com.br/wp-content/uploads/2017/08/shih-tzu-e1574943268872.jpg' }}
                   />
                   <PetName>Tor</PetName>
                   <PetAge>5 anos</PetAge>
@@ -31,8 +26,7 @@ const Recomended: React.FC<RecomendedProps> = ({ title }) => {
 
               <Item>
                   <ImagePet 
-                    source={{ uri:'https://cozinhacanina.com.br/wp-content/uploads/2020/09/racoes-para-Pastor-alemao.png' }}
-                    style={{ resizeMode:"contain" }}
+                    source={{ uri:'https://img.olx.com.br/images/96/960096223123824.jpg' }}
                   />
                   <PetName>Rex</PetName>
                   <PetAge>4 anos</PetAge>
@@ -40,8 +34,7 @@ const Recomended: React.FC<RecomendedProps> = ({ title }) => {
 
               <Item>
                   <ImagePet 
-                    source={{ uri:'https://lh3.googleusercontent.com/proxy/3KhHg19evZ3bAvtvuHrvUTlw91mY7hvKp_A_1Z-pxBVa2P5-rEbaa4OtvjLufVl9GCtnZyVogt9Dt8JpPp7myMyIDSQ_H5lot4VUoS0zXNFhdNEkMkw' }}
-                    style={{ resizeMode:"contain" }}
+                    source={{ uri:'https://fotos.amomeupet.org/uploads/fotos/0x800_1568662224_5d7fe2d09bccd.jpeg' }}
                   />
                   <PetName>March</PetName>
                   <PetAge>2 anos</PetAge>

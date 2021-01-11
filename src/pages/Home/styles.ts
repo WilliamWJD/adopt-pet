@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
+export const Container = styled.ScrollView`
     flex:1;
     padding:10px 20px;
 `;
@@ -32,11 +32,13 @@ export const BoxTitle = styled.View`
 export const Title = styled.Text`
     font-family:'Roboto_700Bold';
     font-size:25px;
+    color:#382927;
 `;
 
 export const SubTitle = styled.Text`
     font-size:15px;
     font-family:'Roboto_400Regular';
+    color:#7f8c8d;
 `;
 
 export const BoxSearch = styled.View`
