@@ -1,6 +1,8 @@
 import React from 'react';
 import { Ionicons } from '@expo/vector-icons'
 
+import Recomended from '../../components/Recomended';
+
 import { 
   Container, 
   Header, 
@@ -11,7 +13,7 @@ import {
   SubTitle,
   BoxSearch,
   Input
-} from './styles.ts';
+} from './styles';
 
 const Home: React.FC = () => {
   return(
@@ -32,6 +34,10 @@ const Home: React.FC = () => {
         <Ionicons name="search-outline" size={20}/>
         <Input placeholder="Pesquisa por uma raça"/>
       </BoxSearch>
+
+      <Recomended
+        title="Recomendados"
+      />
     </Container>
   )
 }
