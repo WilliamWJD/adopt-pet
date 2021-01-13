@@ -19,7 +19,8 @@ import {
   ContactWhats,
   ContactMail,
   ContactWhatsTitle,
-  ContactEmailTitle
+  ContactEmailTitle,
+  PetDetail
 } from './styles';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 
@@ -49,6 +50,7 @@ const Detail: React.FC = () => {
 
         <InfoPet>
           <PetName>Olá, eu sou o Theo</PetName>
+          <PetDetail>🐶 Tenho 5 anos e sou da raça ❤️ Shit-zu</PetDetail>
           <PetDescription>
             Gosto muito de receber carinho e de brincar, fico triste quando fico sózinho, gosto de ficar perto do meu dono a todo momento, gosto muito de comer chinelos, por isso peço sua compreensão para não brigar comigo rs.
           </PetDescription>

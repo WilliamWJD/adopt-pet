@@ -40,8 +40,14 @@ export const PetName = styled.Text`
     color:#382927;
 `;
 
+export const PetDetail = styled.Text`
+    font-family:'Roboto_700Bold';
+    color:#7f8c8d;
+    margin-top:5px;
+`;
+
 export const PetDescription = styled.Text`
-    margin-top:10px;
+    margin-top:20px;
     font-family:'Roboto_400Regular';
     color: #7f8c8d;
     line-height:20px;
