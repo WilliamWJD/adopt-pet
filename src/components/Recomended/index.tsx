@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ScrollView } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import { 
     Container, 
@@ -12,11 +12,13 @@ import {
 } from './styles';
 
 const Recomended: React.FC = () => {
+  const navigation = useNavigation();
+
   return(
       <Container>
           <Title>❤️ Recomendados</Title>
           <BoxItems horizontal={true} showsHorizontalScrollIndicator={false}>
-              <Item>
+              <Item onPress={()=>navigation.navigate('Detail')}>
                   <ImagePet 
                     source={{ uri:'https://conviteasaude.com.br/wp-content/uploads/2017/08/shih-tzu-e1574943268872.jpg' }}
                   />
