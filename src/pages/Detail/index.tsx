@@ -68,12 +68,12 @@ const Detail: React.FC = () => {
   }, [])
 
   const handleMessageWhats = useCallback((pet:IPetDetail) => {
-    const text = `Olá, tenho interesse em adotar o ${pet.name}, gostária de obter mais informações a respeito da adoção.`
+    const text = `Olá, tenho interesse em adotar o ${pet.name}, gostaria de obter mais informações a respeito da adoção.`
     Linking.openURL(`whatsapp://send?text=${text}&phone=${pet.whatsapp}`)
   }, [])
 
   const handleMessageMail = useCallback((pet:IPetDetail)=>{
-    const body = `Olá, tenho interesse em adotar o ${pet.name}, gostária de obter mais informações a respeito da adoção.`
+    const body = `Olá, tenho interesse em adotar o ${pet.name}, gostaria de obter mais informações a respeito da adoção.`
     const subject = `Adoção do ${pet.name}`;
     Linking.openURL(`mailto:${pet.email}?subject=${subject}&body=${body}`)
   },[])
