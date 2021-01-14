@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+
+import api from '../../services/api';
 
 import { 
     Container, 
@@ -11,36 +13,40 @@ import {
     PetAge
 } from './styles';
 
+interface IRecomended{
+  id:number;
+  name:string;
+  age:number;
+  path:string;
+}
+
 const Recomended: React.FC = () => {
+  const [recomendeds, setRecomendeds] = useState<IRecomended[]>([])
+
   const navigation = useNavigation();
+
+  useEffect(()=>{
+    async function loadRecomendeds(){
+      const response = await api.get('/recomended');
+      setRecomendeds(response.data)
+    }
+
+    loadRecomendeds();
+  },[])
 
   return(
       <Container>
           <Title>❤️ Recomendados</Title>
           <BoxItems horizontal={true} showsHorizontalScrollIndicator={false}>
-              <Item onPress={()=>navigation.navigate('Detail')}>
-                  <ImagePet 
-                    source={{ uri:'https://conviteasaude.com.br/wp-content/uploads/2017/08/shih-tzu-e1574943268872.jpg' }}
-                  />
-                  <PetName>Tor</PetName>
-                  <PetAge>5 anos</PetAge>
-              </Item>
-
-              <Item>
-                  <ImagePet 
-                    source={{ uri:'https://img.olx.com.br/images/96/960096223123824.jpg' }}
-                  />
-                  <PetName>Rex</PetName>
-                  <PetAge>4 anos</PetAge>
-              </Item>
-
-              <Item>
-                  <ImagePet 
-                    source={{ uri:'https://fotos.amomeupet.org/uploads/fotos/0x800_1568662224_5d7fe2d09bccd.jpeg' }}
-                  />
-                  <PetName>March</PetName>
-                  <PetAge>2 anos</PetAge>
-              </Item>
+              {recomendeds.map(recomended=>(
+                <Item key={recomended.id} onPress={()=>navigation.navigate('Detail')}>
+                    <ImagePet 
+                      source={{ uri:recomended.path }}
+                    />
+                    <PetName>{recomended.name}</PetName>
+                    <PetAge>{recomended.age} anos</PetAge>
+                </Item>
+              ))}
           </BoxItems>
       </Container>
   )

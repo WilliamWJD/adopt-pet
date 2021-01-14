@@ -1,0 +1,107 @@
+{
+    "recomended":[
+        {
+            "id":1,
+            "name":"Theo",
+            "age":5,
+            "breed":"Shih-tzu",
+            "description":"Gosto muito de receber carinho e de brincar, fico triste quando fico sózinho, gosto de ficar perto do meu dono a todo momento, gosto muito de comer chinelos, por isso peço sua compreensão para não brigar comigo rs.",
+            "whatsapp":"5519988929523",
+            "email":"william@william.com.br",
+            "path":"https://conviteasaude.com.br/wp-content/uploads/2017/08/shih-tzu-e1574943268872.jpg",
+            "images":[
+                {
+                    "id":1,
+                    "path":"https://conviteasaude.com.br/wp-content/uploads/2017/08/shih-tzu-e1574943268872.jpg"
+                },
+                {
+                    "id":2,
+                    "path":"https://www.adoropets.com.br/wp-content/uploads/2018/03/shih-tzu-sentado.jpg"
+                }
+            ]
+        },
+        {
+            "id":2,
+            "name":"Rex",
+            "age":6,
+            "breed":"Pastor Alemão",
+            "description":"Gosto muito de correr e buscar objetos para os humanos",
+            "whatsapp":"5519988929523",
+            "email":"william@william.com.br",
+            "path":"https://www.petlove.com.br/images/breeds/193103/profile/original/pastor_alemao-p.jpg",
+            "images":[
+                {
+                    "id":1,
+                    "path":"https://www.petlove.com.br/images/breeds/193103/profile/original/pastor_alemao-p.jpg"
+                },
+                {
+                    "id":2,
+                    "path":"https://i.pinimg.com/originals/5f/c3/6e/5fc36eef046e1cc62bf25f8aeb0dd7ef.jpg"
+                }
+            ]
+        },
+        {
+            "id":3,
+            "name":"March",
+            "age":3,
+            "breed":"Viralata",
+            "description":"Gosto muito de correr e buscar objetos para os humanos, sou muito dorminhoco",
+            "whatsapp":"5519988929523",
+            "email":"william@william.com.br",
+            "path":"https://upload.wikimedia.org/wikipedia/commons/7/70/Serena_REFON.jpg",
+            "images":[
+                {
+                    "id":1,
+                    "path":"https://upload.wikimedia.org/wikipedia/commons/7/70/Serena_REFON.jpg"
+                },
+                {
+                    "id":2,
+                    "path":"https://www.hypeness.com.br/1/2019/09/Vira-lata_Caramelo_3.jpg"
+                }
+            ]
+        }
+    ],
+
+    "news":[
+        {
+            "id":2,
+            "name":"Rex",
+            "age":6,
+            "breed":"Pastor Alemão",
+            "description":"Gosto muito de correr e buscar objetos para os humanos",
+            "whatsapp":"5519988929523",
+            "email":"william@william.com.br",
+            "path":"https://www.petlove.com.br/images/breeds/193103/profile/original/pastor_alemao-p.jpg",
+            "images":[
+                {
+                    "id":1,
+                    "path":"https://www.petlove.com.br/images/breeds/193103/profile/original/pastor_alemao-p.jpg"
+                },
+                {
+                    "id":2,
+                    "path":"https://i.pinimg.com/originals/5f/c3/6e/5fc36eef046e1cc62bf25f8aeb0dd7ef.jpg"
+                }
+            ]
+        },
+        {
+            "id":3,
+            "name":"March",
+            "age":3,
+            "breed":"Viralata",
+            "description":"Gosto muito de correr e buscar objetos para os humanos, sou muito dorminhoco",
+            "whatsapp":"5519988929523",
+            "email":"william@william.com.br",
+            "path":"https://upload.wikimedia.org/wikipedia/commons/7/70/Serena_REFON.jpg",
+            "images":[
+                {
+                    "id":1,
+                    "path":"https://upload.wikimedia.org/wikipedia/commons/7/70/Serena_REFON.jpg"
+                },
+                {
+                    "id":2,
+                    "path":"https://www.hypeness.com.br/1/2019/09/Vira-lata_Caramelo_3.jpg"
+                }
+            ]
+        }
+    ]
+}

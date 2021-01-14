@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import { Linking } from 'react-native'; 
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
@@ -29,6 +30,13 @@ const Detail: React.FC = () => {
 
   const handleGoBack = useCallback(()=>{
     navigation.goBack();
+  },[])
+
+  const handleMessageWhats = useCallback(()=>{
+    const text="Olá, tenho interesse em adotar o Theo, gostária de obter mais informações a respeito da adoção."
+    const phone="5519988929523"
+
+    Linking.openURL(`whatsapp://send?text=${text}&phone=${phone}`)
   },[])
 
   return (
@@ -62,7 +70,7 @@ const Detail: React.FC = () => {
         </InfoAdot>
 
         <ContactsContainer>
-          <ContactWhats>
+          <ContactWhats onPress={handleMessageWhats}>
             <Ionicons name="mail-outline" size={30} color="#fff"/>
             <ContactWhatsTitle>Entre em contato por e-mail</ContactWhatsTitle>
           </ContactWhats>
