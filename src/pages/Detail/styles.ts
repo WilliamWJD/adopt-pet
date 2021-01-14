@@ -25,8 +25,7 @@ export const ImagesContainer = styled.View``;
 
 export const ScrollImage = styled.ScrollView``;
 
-export const Image = styled.Image`
-    width:${Dimensions.get('window').width};
+export const ImageBack = styled.Image`
     height:200px;
 `;
 
@@ -90,6 +89,7 @@ export const ContactWhats = styled.TouchableOpacity`
     align-items:center;
     border-radius:10px;
     padding:0 10px;
+    margin-top:10px;
 `;
 
 export const ContactWhatsTitle = styled.Text`
@@ -100,8 +100,8 @@ export const ContactWhatsTitle = styled.Text`
 `;
 
 export const ContactMail = styled.TouchableOpacity`
-    height:50px;
     width:100%;
+    height:50px;
     background-color:#2ecc71;
 
     display:flex;
@@ -110,7 +110,6 @@ export const ContactMail = styled.TouchableOpacity`
     align-items:center;
     border-radius:10px;
     padding:0 10px;
-    margin-top:10px;
 `;
 
 export const ContactEmailTitle = styled.Text`

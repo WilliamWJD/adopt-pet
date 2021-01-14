@@ -39,7 +39,7 @@ const Recomended: React.FC = () => {
           <Title>❤️ Recomendados</Title>
           <BoxItems horizontal={true} showsHorizontalScrollIndicator={false}>
               {recomendeds.map(recomended=>(
-                <Item key={recomended.id} onPress={()=>navigation.navigate('Detail')}>
+                <Item key={recomended.id} onPress={()=>navigation.navigate('Detail', { id:recomended.id })}>
                     <ImagePet 
                       source={{ uri:recomended.path }}
                     />

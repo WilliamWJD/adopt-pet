@@ -1,6 +1,5 @@
 import React from 'react';
 import { Ionicons } from '@expo/vector-icons'
-import { useNavigation } from '@react-navigation/native';
 
 import Recomended from '../../components/Recomended';
 import NewPet from '../../components/NewPets';
@@ -38,7 +37,6 @@ const Home: React.FC = () => {
       </BoxSearch>
 
       <Recomended/>
-
       <NewPet/>
 
     </Container>

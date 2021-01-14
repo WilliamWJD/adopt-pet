@@ -1,7 +1,9 @@
-import React, { useCallback } from 'react';
-import { Linking } from 'react-native'; 
+import React, { useCallback, useEffect, useState } from 'react';
+import { Dimensions, Linking, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
+
+import api from '../../services/api';
 
 import {
   Container,
@@ -9,7 +11,7 @@ import {
   PageTitle,
   ImagesContainer,
   ScrollImage,
-  Image,
+  ImageBack,
   InfoPet,
   PetName,
   PetDescription,
@@ -25,25 +27,72 @@ import {
 } from './styles';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 
+interface IPetDetailProps {
+  id: string;
+}
+
+interface IPetDetail {
+  id: number;
+  name: string;
+  age: number;
+  breed: string;
+  description: string;
+  whatsapp: string;
+  email: string;
+  path: string;
+  photos: Array<{
+    id: number;
+    path: string;
+  }>;
+}
+
 const Detail: React.FC = () => {
+  const [petDetail, setPetDetail] = useState<IPetDetail>({} as IPetDetail);
+  const [loading, setLoading] = useState(false);
+
   const navigation = useNavigation();
+  const route = useRoute();
 
-  const handleGoBack = useCallback(()=>{
+  useEffect(() => {
+    async function loadPetDetail() {
+      setLoading(true);
+
+      const params = route.params as IPetDetailProps;
+
+      const response = await api.get(`/recomended/${params.id}`)
+      console.log(response.data)
+      setPetDetail(response.data)
+
+      setLoading(false);
+    }
+
+    loadPetDetail();
+  }, [])
+
+  const handleGoBack = useCallback(() => {
     navigation.goBack();
-  },[])
+  }, [])
 
-  const handleMessageWhats = useCallback(()=>{
-    const text="Olá, tenho interesse em adotar o Theo, gostária de obter mais informações a respeito da adoção."
-    const phone="5519988929523"
+  const handleMessageWhats = useCallback(() => {
+    const text = `Olá, tenho interesse em adotar o ${petDetail.name}, gostária de obter mais informações a respeito da adoção.`
+    Linking.openURL(`whatsapp://send?text=${text}&phone=${petDetail.whatsapp}`)
+  }, [])
 
-    Linking.openURL(`whatsapp://send?text=${text}&phone=${phone}`)
-  },[])
+  if(loading){
+    return(
+      <>
+        <Container>
+          <Text>CARREGANDO</Text>
+        </Container>
+      </>
+    )
+  }
 
   return (
     <Container>
       <Header>
         <TouchableOpacity onPress={handleGoBack}>
-          <Ionicons name="arrow-back-outline" size={30} color="#382927"/>
+          <Ionicons name="arrow-back-outline" size={30} color="#382927" />
         </TouchableOpacity>
         <PageTitle>Detalhe do Pet</PageTitle>
       </Header>
@@ -51,17 +100,16 @@ const Detail: React.FC = () => {
       <ScrollView>
         <ImagesContainer>
           <ScrollImage horizontal pagingEnabled>
-            <Image source={{ uri: 'https://conviteasaude.com.br/wp-content/uploads/2017/08/shih-tzu-e1574943268872.jpg' }} />
-            <Image source={{ uri: 'https://i.pinimg.com/736x/f5/a7/6c/f5a76c6242a867ee844899b20f1e38d3.jpg' }} />
+            {petDetail.photos?.map(item => (
+              <ImageBack key={item.id} source={{ uri: item.path }} style={{ width: Dimensions.get('window').width, resizeMode:'cover' }}/>
+            ))}
           </ScrollImage>
         </ImagesContainer>
 
         <InfoPet>
-          <PetName>Olá, eu sou o Theo</PetName>
-          <PetDetail>🐶 Tenho 5 anos e sou da raça ❤️ Shit-zu</PetDetail>
-          <PetDescription>
-            Gosto muito de receber carinho e de brincar, fico triste quando fico sózinho, gosto de ficar perto do meu dono a todo momento, gosto muito de comer chinelos, por isso peço sua compreensão para não brigar comigo rs.
-          </PetDescription>
+          <PetName>Olá, eu sou o {petDetail.name}</PetName>
+          <PetDetail>🐶 Tenho {petDetail.age} anos e sou da raça ❤️ {petDetail.breed}</PetDetail>
+          <PetDescription>{petDetail.description}</PetDescription>
         </InfoPet>
 
         <InfoAdot>
@@ -70,14 +118,14 @@ const Detail: React.FC = () => {
         </InfoAdot>
 
         <ContactsContainer>
-          <ContactWhats onPress={handleMessageWhats}>
-            <Ionicons name="mail-outline" size={30} color="#fff"/>
+          <ContactMail onPress={handleMessageWhats}>
+            <Ionicons name="mail-outline" size={30} color="#fff" />
             <ContactWhatsTitle>Entre em contato por e-mail</ContactWhatsTitle>
-          </ContactWhats>
-          <ContactMail>
-            <Ionicons name="logo-whatsapp" size={30} color="#fff"/>
-            <ContactEmailTitle>Entre em contato por Whatsapp</ContactEmailTitle>
           </ContactMail>
+          <ContactWhats onPress={handleMessageWhats}>
+            <Ionicons name="logo-whatsapp" size={30} color="#fff" />
+            <ContactEmailTitle>Entre em contato por Whatsapp</ContactEmailTitle>
+          </ContactWhats>
         </ContactsContainer>
       </ScrollView>
     </Container>
