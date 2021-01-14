@@ -81,7 +81,7 @@ export const ContactsContainer = styled.View`
 export const ContactWhats = styled.TouchableOpacity`
     height:50px;
     width:100%;
-    background-color:#e74c3c;
+    background-color:#2ecc71;
 
     display:flex;
     flex-direction:row;
@@ -102,7 +102,7 @@ export const ContactWhatsTitle = styled.Text`
 export const ContactMail = styled.TouchableOpacity`
     width:100%;
     height:50px;
-    background-color:#2ecc71;
+    background-color:#e74c3c;
 
     display:flex;
     flex-direction:row;
