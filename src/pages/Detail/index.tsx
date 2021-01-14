@@ -4,11 +4,10 @@ import { Ionicons } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 import api from '../../services/api';
+import Header from '../../components/Header';
 
 import {
   Container,
-  Header,
-  PageTitle,
   ImagesContainer,
   ScrollImage,
   ImageBack,
@@ -90,12 +89,9 @@ const Detail: React.FC = () => {
 
   return (
     <Container>
-      <Header>
-        <TouchableOpacity onPress={handleGoBack}>
-          <Ionicons name="arrow-back-outline" size={30} color="#382927" />
-        </TouchableOpacity>
-        <PageTitle>Detalhe do Pet</PageTitle>
-      </Header>
+      <Header
+        title="Detalhe do pet"
+      />
 
       <ScrollView>
         <ImagesContainer>

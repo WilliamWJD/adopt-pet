@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Ionicons } from '@expo/vector-icons'
+import { useNavigation } from '@react-navigation/native';
 
 import Recomended from '../../components/Recomended';
 import NewPet from '../../components/NewPets';
@@ -28,6 +29,8 @@ const Home: React.FC = () => {
   const [searchBreed, setSearchBreed] = useState('');
   const [pets, setPets] = useState<IPets[]>([]);
 
+  const navigation = useNavigation();
+
   useEffect(()=>{
     async function filterPetByBreed(){
       const response = await api.get('/pets',{
@@ -45,7 +48,7 @@ const Home: React.FC = () => {
   return(
     <Container>
       <Header>
-        <MyFavoriteList>
+        <MyFavoriteList onPress={()=>navigation.navigate('Favorites')}>
           <MyFavoriteListTitle>Favoritos ⭐</MyFavoriteListTitle>
         </MyFavoriteList>
       </Header>

@@ -4,22 +4,6 @@ export const Container = styled.View`
     flex:1;
 `;
 
-export const Header = styled.View`
-    height:60px;
-    display:flex;
-    flex-direction:row;
-    align-items:center;
-    margin-bottom:10px;
-    padding:10px 20px;
-`;
-
-export const PageTitle = styled.Text`
-   margin:auto;
-   font-family:'Roboto_700Bold';
-   font-size:20px;
-   color:#382927;
-`;
-
 export const ImagesContainer = styled.View``;
 
 export const ScrollImage = styled.ScrollView``;
