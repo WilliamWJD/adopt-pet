@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 
+import { IPets } from '../../pages/Home';
+
 import {
   Container,
   Title,
@@ -13,33 +15,19 @@ import {
   Contacts,
   ImagePet
 } from './styles';
-import api from '../../services/api';
 
-interface IRecomended{
-  id:number;
-  name:string;
-  age:number;
-  path:string;
+interface Props{
+  pets:Array<IPets>
 }
 
-const NewPets: React.FC = () => {
-  const [newPets, setNewPets] = useState<IRecomended[]>([]);
-
-  useEffect(()=>{
-    async function loadNewPets(){
-      const response = await api.get('/news');
-      setNewPets(response.data);
-    }
-    loadNewPets();
-  },[])
-
+const NewPets: React.FC<Props> = ({ pets }) => {
   return (
     <Container>
-      <Title>🐶 Novos Pets</Title>
+      <Title>🐶 Pets</Title>
       <Subtitle>Encontre um pet para o seu lar</Subtitle>
 
       <BoxItems>
-        {newPets.map(pet=>(
+        {pets.map(pet=>(
           <Item key={pet.id}>
             <Detail>
               <PetName>{pet.name}</PetName>

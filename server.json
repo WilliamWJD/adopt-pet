@@ -62,7 +62,27 @@
         }
     ],
 
-    "news":[
+    "pets":[
+        {
+            "id":1,
+            "name":"Theo",
+            "age":5,
+            "breed":"Shih-tzu",
+            "description":"Gosto muito de receber carinho e de brincar, fico triste quando fico sózinho, gosto de ficar perto do meu dono a todo momento, gosto muito de comer chinelos, por isso peço sua compreensão para não brigar comigo rs.",
+            "whatsapp":"5519988888888",
+            "email":"william@william.com.br",
+            "path":"https://conviteasaude.com.br/wp-content/uploads/2017/08/shih-tzu-e1574943268872.jpg",
+            "photos":[
+                {
+                    "id":1,
+                    "path":"https://conviteasaude.com.br/wp-content/uploads/2017/08/shih-tzu-e1574943268872.jpg"
+                },
+                {
+                    "id":2,
+                    "path":"https://www.adoropets.com.br/wp-content/uploads/2018/03/shih-tzu-sentado.jpg"
+                }
+            ]
+        },
         {
             "id":2,
             "name":"Rex",

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Ionicons } from '@expo/vector-icons'
 
 import Recomended from '../../components/Recomended';
@@ -15,8 +15,32 @@ import {
   BoxSearch,
   Input
 } from './styles';
+import api from '../../services/api';
+
+export interface IPets{
+  id:number;
+  name:string;
+  age:number;
+  path:string;
+}
 
 const Home: React.FC = () => {
+  const [searchBreed, setSearchBreed] = useState('');
+  const [pets, setPets] = useState<IPets[]>([]);
+
+  useEffect(()=>{
+    async function filterPetByBreed(){
+      const response = await api.get('/pets',{
+        params:{
+          breed_like: searchBreed
+        }
+      })
+
+      setPets(response.data)
+    }
+
+    filterPetByBreed();
+  },[searchBreed])
 
   return(
     <Container>
@@ -33,11 +57,20 @@ const Home: React.FC = () => {
 
       <BoxSearch>
         <Ionicons name="search-outline" size={20}/>
-        <Input placeholder="Pesquisa por uma raça"/>
+        <Input 
+          placeholder="Pesquisa por uma raça" 
+          onChangeText={(text:string)=>setSearchBreed(text)} 
+          value={searchBreed}
+        />
       </BoxSearch>
 
-      <Recomended/>
-      <NewPet/>
+      {!searchBreed && (
+        <Recomended/>
+      )}
+
+      <NewPet
+        pets={pets}
+      />
 
     </Container>
   )
