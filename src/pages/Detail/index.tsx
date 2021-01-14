@@ -1,7 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Dimensions, Linking, Text } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { Dimensions, Linking, Text, TouchableOpacity, View } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
+import { useRoute } from '@react-navigation/native';
 
 import api from '../../services/api';
 import Header from '../../components/Header';
@@ -24,7 +25,7 @@ import {
   ContactEmailTitle,
   PetDetail
 } from './styles';
-import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
+import { ScrollView, } from 'react-native-gesture-handler';
 
 interface IPetDetailProps {
   id: string;
@@ -49,7 +50,6 @@ const Detail: React.FC = () => {
   const [petDetail, setPetDetail] = useState<IPetDetail>({} as IPetDetail);
   const [loading, setLoading] = useState(false);
 
-  const navigation = useNavigation();
   const route = useRoute();
 
   useEffect(() => {
@@ -59,7 +59,6 @@ const Detail: React.FC = () => {
       const params = route.params as IPetDetailProps;
 
       const response = await api.get(`/recomended/${params.id}`)
-      console.log(response.data)
       setPetDetail(response.data)
 
       setLoading(false);
@@ -68,20 +67,23 @@ const Detail: React.FC = () => {
     loadPetDetail();
   }, [])
 
-  const handleGoBack = useCallback(() => {
-    navigation.goBack();
+  const handleMessageWhats = useCallback((pet:IPetDetail) => {
+    const text = `Olá, tenho interesse em adotar o ${pet.name}, gostária de obter mais informações a respeito da adoção.`
+    Linking.openURL(`whatsapp://send?text=${text}&phone=${pet.whatsapp}`)
   }, [])
 
-  const handleMessageWhats = useCallback(() => {
-    const text = `Olá, tenho interesse em adotar o ${petDetail.name}, gostária de obter mais informações a respeito da adoção.`
-    Linking.openURL(`whatsapp://send?text=${text}&phone=${petDetail.whatsapp}`)
-  }, [])
+  const handleMessageMail = useCallback((pet:IPetDetail)=>{
+    const body = `Olá, tenho interesse em adotar o ${pet.name}, gostária de obter mais informações a respeito da adoção.`
+    const subject = `Adoção do ${pet.name}`;
+    Linking.openURL(`mailto:${pet.email}?subject=${subject}&body=${body}`)
+  },[])
 
-  if(loading){
-    return(
+
+  if (loading) {
+    return (
       <>
-        <Container>
-          <Text>CARREGANDO</Text>
+        <Container style={{ flex:1, justifyContent:'center', alignItems:'center' }}>
+          <Text style={{ fontFamily:'Roboto_700Bold', fontSize:17 }}>CARREGANDO</Text>
         </Container>
       </>
     )
@@ -97,13 +99,20 @@ const Detail: React.FC = () => {
         <ImagesContainer>
           <ScrollImage horizontal pagingEnabled>
             {petDetail.photos?.map(item => (
-              <ImageBack key={item.id} source={{ uri: item.path }} style={{ width: Dimensions.get('window').width, resizeMode:'cover' }}/>
+              <ImageBack key={item.id} source={{ uri: item.path }} style={{ width: Dimensions.get('window').width, resizeMode: 'cover' }} />
             ))}
           </ScrollImage>
         </ImagesContainer>
 
         <InfoPet>
-          <PetName>Olá, eu sou o {petDetail.name}</PetName>
+          <View style={{ display:'flex', flexDirection:'row', justifyContent:'space-between' }}>
+            <PetName>Olá, eu sou o {petDetail.name}</PetName>
+
+            <TouchableOpacity onPress={() => { }}>
+              <MaterialIcons name="grade" size={35} color="#f1c40f" />
+            </TouchableOpacity>
+          </View>
+
           <PetDetail>🐶 Tenho {petDetail.age} anos e sou da raça ❤️ {petDetail.breed}</PetDetail>
           <PetDescription>{petDetail.description}</PetDescription>
         </InfoPet>
@@ -114,11 +123,11 @@ const Detail: React.FC = () => {
         </InfoAdot>
 
         <ContactsContainer>
-          <ContactMail onPress={handleMessageWhats}>
+          <ContactMail onPress={()=>handleMessageMail(petDetail)}>
             <Ionicons name="mail-outline" size={30} color="#fff" />
             <ContactWhatsTitle>Entre em contato por e-mail</ContactWhatsTitle>
           </ContactMail>
-          <ContactWhats onPress={handleMessageWhats}>
+          <ContactWhats onPress={()=>handleMessageWhats(petDetail)}>
             <Ionicons name="logo-whatsapp" size={30} color="#fff" />
             <ContactEmailTitle>Entre em contato por Whatsapp</ContactEmailTitle>
           </ContactWhats>
